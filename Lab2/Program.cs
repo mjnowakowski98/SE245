@@ -27,16 +27,29 @@ namespace Lab2 {
 				.10, .12, .22, .24, .32, .35, .37
 			};
 
-			// User vars
-			String inputBuffer = "";
-			String sEmployeeName = "";
-			Double numHoursWorked = 0,
-					numPayRate = 0;
-
 			// Output program name
 			Console.WriteLine("Payroll Calculator");
 
-			
+			// Main application loop
+			while (true) {
+				// Get employee name
+				String tmpName = "";
+				do {
+					Console.Write("Enter employee name (type 'done' to stop): ");
+					tmpName = Console.ReadLine();
+				} while (tmpName == "");
+				if (tmpName == "done") break; // Stop entering names if done
+
+				String inputBuffer = "";
+				Double tmpHourlyRate = 0;
+				do {
+					Console.Write("Enter hourly pay rate: ");
+					inputBuffer = Console.ReadLine();
+				} while (!Double.TryParse(inputBuffer, out tmpHourlyRate));
+
+			}
+
+
 
 			// Emulate dos shell pause
 			Console.WriteLine("Press any key to continue");
