@@ -9,8 +9,9 @@ namespace Lab2 {
 		struct EmployeeInfo {
 			String sEmployeeName;
 			Double numHourlyRate,
-				numHoursWorked,
-				numGrossPay,
+				numHoursWorked;
+				
+			Double numGrossPay,
 				numGrossPerYear,
 				numNetPay;
 		}
@@ -30,6 +31,8 @@ namespace Lab2 {
 			// Output program name
 			Console.WriteLine("Payroll Calculator");
 
+			List<EmployeeInfo> employees = new List<EmployeeInfo>();
+
 			// Main application loop
 			while (true) {
 				// Get employee name
@@ -47,6 +50,16 @@ namespace Lab2 {
 					inputBuffer = Console.ReadLine();
 				} while (!Double.TryParse(inputBuffer, out tmpHourlyRate));
 
+				inputBuffer = "";
+				Double tmpHours = 0;
+				do {
+					Console.Write("Enter hours worked: ");
+					inputBuffer = Console.ReadLine();
+				} while (!Double.TryParse(inputBuffer, out tmpHours));
+
+				
+
+				employees.Add(new EmployeeInfo(tmpName, tmpHourlyRate, tmpHours));
 			}
 
 
