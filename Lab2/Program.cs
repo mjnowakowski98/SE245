@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Matthew Nowakowski
+// Lab 2 - Fancier Payroll Calculator
+// Now with a struct, a foreach loop, and lists
+// Created 7/24/18
+// Draft completed 7/24/18
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +12,15 @@ using System.Threading.Tasks;
 
 namespace Lab2 {
 	class Program {
-		// Small object to store info per employee
+		// Small struct to store info per employee
 		public struct EmployeeInfo {
+			// User input
 			public String sEmployeeName;
 			public Double
 				numHourlyRate,
 				numHoursWorked;
-				
+
+			// Calculated
 			public Double
 				numGrossPay,
 				numGrossPerYear,
@@ -73,7 +81,7 @@ namespace Lab2 {
 			}
 
 			// Output information
-			foreach(EmployeeInfo obj in employees) {
+			foreach (EmployeeInfo obj in employees) {
 				Console.WriteLine("\n"); // 2 newlines
 				Console.WriteLine("Payroll information for employee: " + obj.sEmployeeName);
 				Console.WriteLine("Hourly rate:                      " + obj.numHourlyRate);
