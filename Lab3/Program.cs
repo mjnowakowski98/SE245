@@ -103,10 +103,10 @@ namespace Lab2 {
 				tmp.numTaxesDeducted = tmp.numGrossPay * kTaxPercents[taxNdx]; // Calculate deducted taxes
 
 				employees.Add(tmp); // Copy builder to new ndx of employee list
-
-				Output(ref employees);
-				Pause();
 			}
+
+			Output(ref employees); // Output results
+			Pause(); // Let them read
 		}
 	}
 }
