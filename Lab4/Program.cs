@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Matthew Nowakowski
+// Lab 4 - Structs/Classes Example
+// Created 7/26/18
+// Draft completed 7/31/18
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +26,11 @@ namespace Lab4 {
 	// }
 
 	class Program {
+		static void Pause() {
+			Console.WriteLine(" Press any key to continue . . .");
+			Console.ReadKey();
+		}
+
 		static void Main(string[] args) {
 			Person person = new Person();
 			Console.Write("Enter first name: ");
@@ -36,11 +46,11 @@ namespace Lab4 {
 			person.LastName = Console.ReadLine();
 			// person.lName = Console.ReadLine();
 
-			Console.Write("Enter street1");
+			Console.Write("Enter street1: ");
 			person.Street1 = Console.ReadLine();
 			// person.street1 = Console.ReadLine();
 
-			Console.Write("Enter street2");
+			Console.Write("Enter street2: ");
 			person.Street2 = Console.ReadLine();
 			// person.street2 = Console.ReadLine();
 
@@ -64,8 +74,9 @@ namespace Lab4 {
 			person.Email = Console.ReadLine();
 			// person.email = Console.ReadLine();
 			person.Output();
+			Pause();
 
-			// Example struct inputput
+			// Example struct input
 			// Person person = new Person();
 			// person.fName = Console.ReadLine();
 			// person.mName = Console.ReadLine();

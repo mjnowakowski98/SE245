@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Matthew Nowakowski
+// Lab 4 - Person Class
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +34,8 @@ namespace Lab4 {
 			phone,
 			email;
 
+		// Accessors/Mutators
+		// (Not validating untill Lab5)
 		public String FirstName {
 			get { return fName; }
 			set { fName = value; }
@@ -81,17 +86,15 @@ namespace Lab4 {
 			set { email = value; }
 		}
 
-		public void Output() {
-			Console.WriteLine(FirstName);
-			Console.WriteLine(MiddleName);
-			Console.WriteLine(LastName);
-			Console.WriteLine(Street1);
-			Console.WriteLine(Street2);
-			Console.WriteLine(City);
-			Console.WriteLine(State);
-			Console.WriteLine(Zip);
-			Console.WriteLine(Phone);
-			Console.WriteLine(Email);
+		public void Output() { // Output using class properties
+			Console.WriteLine("\nInformation for " + LastName + ", " + FirstName + " " + MiddleName + ": ");
+			Console.WriteLine("Address:");
+			Console.WriteLine("\t" + Street1);
+			Console.WriteLine("\t" + Street2);
+			Console.WriteLine("\t" + City + ", " + State);
+			Console.WriteLine("\t" + Zip);
+			Console.WriteLine("Phone: " + Phone);
+			Console.WriteLine("Email: " + Email);
 
 			// Example output using public vars
 			// Console.WriteLine(fName);
