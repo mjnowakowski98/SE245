@@ -10,6 +10,22 @@ using System.Threading.Tasks;
 
 namespace Lab5 {
 	class Person {
+		public Person() {
+			fName = "";
+			mName = "";
+			lName = "";
+			street1 = "";
+			street2 = "";
+			city = "";
+			state = "";
+			zip = "";
+			phone = "";
+			email = "";
+
+			feedback = "";
+			inputValid = false;
+		}
+
 		private String
 			fName,
 			mName,
@@ -22,8 +38,8 @@ namespace Lab5 {
 			phone,
 			email;
 
-		private String feedback = "";
-		private bool inputValid = false;
+		private String feedback;
+		private bool inputValid;
 
 		// Read-only
 		public String Feedback {
@@ -106,7 +122,7 @@ namespace Lab5 {
 					state = value;
 					inputValid = true;
 				} else {
-					feedback += "Error: State was invalid\n";
+					feedback += "Error: State was invalid length\n";
 					inputValid = false;
 				}
 			}
@@ -114,17 +130,41 @@ namespace Lab5 {
 
 		public String Zip {
 			get { return zip; }
-			set { zip = value; }
+			set {
+				if (Validator.IsValidZip(value)) {
+					zip = value;
+					inputValid = true;
+				} else {
+					feedback += "Error: Zip is not formatted correctly\n";
+					inputValid = false;
+				}
+			}
 		}
 
 		public String Phone {
 			get { return phone; }
-			set { phone = value; }
+			set {
+				if(Validator.IsValidPhone(value)) {
+					phone = value;
+					inputValid = true;
+				} else {
+					feedback += "Error: Phone is not formatted correctly\n";
+					inputValid = false;
+				}
+			}
 		}
 
 		public String Email {
 			get { return email; }
-			set { email = value; }
+			set {
+				if (Validator.IsValidEmail(value)) {
+					email = value;
+					inputValid = true;
+				} else {
+					feedback += "Error: Email is not formatted correctly\n";
+					inputValid = false;
+				}
+			}
 		}
 
 		public void Output() { // Output using class properties
