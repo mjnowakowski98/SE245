@@ -38,8 +38,20 @@ namespace Lab5 {
 			phone,
 			email;
 
-		private String feedback;
-		private bool inputValid;
+		protected String feedback;
+		protected bool inputValid;
+
+		// Public methods
+		public void Output() { // Output using class properties
+			Console.WriteLine("\nInformation for " + LastName + ", " + FirstName + " " + MiddleName + ": ");
+			Console.WriteLine("Address:");
+			Console.WriteLine("\t" + Street1);
+			Console.WriteLine("\t" + Street2);
+			Console.WriteLine("\t" + City + ", " + State);
+			Console.WriteLine("\t" + Zip);
+			Console.WriteLine("Phone: " + Phone);
+			Console.WriteLine("Email: " + Email);
+		}
 
 		// Read-only
 		public String Feedback {
@@ -165,17 +177,6 @@ namespace Lab5 {
 					inputValid = false;
 				}
 			}
-		}
-
-		public void Output() { // Output using class properties
-			Console.WriteLine("\nInformation for " + LastName + ", " + FirstName + " " + MiddleName + ": ");
-			Console.WriteLine("Address:");
-			Console.WriteLine("\t" + Street1);
-			Console.WriteLine("\t" + Street2);
-			Console.WriteLine("\t" + City + ", " + State);
-			Console.WriteLine("\t" + Zip);
-			Console.WriteLine("Phone: " + Phone);
-			Console.WriteLine("Email: " + Email);
 		}
 	}
 }

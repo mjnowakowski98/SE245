@@ -1,6 +1,6 @@
 // Matthew Nowakowski
 // Modified version of ValidationLibrary from example code
-// Last updated 8/14/18
+// Last updated: 8/22/18
 
 using System;
 using Utils;
@@ -45,40 +45,35 @@ namespace ValidationLibrary {
 
 		public static bool IsValidZip(String strIn) {
 			bool result = true;
-			int numTmp;
-			Util.RemoveWhiteSpace(ref strIn);
 
-			int hyphen = strIn.IndexOf('-');
-			if (hyphen != -1) {
-				String zip1 = strIn.Substring(0, hyphen);
-				String zip2 = strIn.Substring(hyphen + 1);
+			char[] toRemove = { '-', ' ' };
+			Util.RemoveCharacter(ref strIn, toRemove);
 
-				if (zip1.Length != 5 || zip2.Length != 4) result = false;
-				else if (!Int32.TryParse(zip1, out numTmp) || !Int32.TryParse(zip2, out numTmp)) result = false;
-			} else if (strIn.Length != 5 || !Int32.TryParse(strIn, out numTmp)) result = false;
+			Int32 tmp;
+			if (!Int32.TryParse(strIn, out tmp)) result = false;
+			if(strIn.Length != 5)
+				if (strIn.Length != 9) result = false;
 
 			return result;
 		}
 
 		public static bool IsValidPhone(String strIn) {
 			bool result = true;
-			int numTmp;
-			Util.RemoveWhiteSpace(ref strIn);
 
-			int areaCodeDelimiter1 = strIn.IndexOf('(');
-			int areaCodeDelimiter2 = strIn.IndexOf(')');
-			int hyphen = strIn.IndexOf('-');
+			char[] toRemove = { '(', ')', '-', ' ' };
+			Util.RemoveCharacter(ref strIn, toRemove);
 
-			String areaCode = strIn.Substring(areaCodeDelimiter1 + 1, areaCodeDelimiter2 - 1);
-			String numPart1 = strIn.Substring(areaCodeDelimiter2 + 1, (hyphen - 1) - areaCodeDelimiter2);
-			String numPart2 = strIn.Substring(hyphen + 1);
-
-			if (areaCode.Length != 3 || numPart1.Length != 3 || numPart2.Length != 4)
+			Int64 tmp;
+			if (!Int64.TryParse(strIn, out tmp) || strIn.Length != 10)
 				result = false;
-			else if (!Int32.TryParse(areaCode, out numTmp)
-				|| !Int32.TryParse(numPart1, out numTmp)
-				|| !Int32.TryParse(numPart2, out numTmp)) result = false;
 
+			return result;
+		}
+
+		public static bool IsValidURL(String strIn) {
+			bool result = true;
+			if (!Uri.IsWellFormedUriString(strIn, UriKind.Absolute))
+				result = false;
 			return result;
 		}
 		
