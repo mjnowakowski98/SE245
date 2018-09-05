@@ -1,8 +1,9 @@
 ﻿// Matthew Nowakowski
-// Lab 5 - PersonV2 Class
+// Lab 6 - PersonV2 Class
 
 using System;
 using ValidationLibrary;
+using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,33 +14,59 @@ namespace Lab6Console {
 		public PersonV2() {
 			cellPhone = "";
 			facebook = "";
+
+            sqlConn = new SqlConnection();
+            sqlConn.ConnectionString = @"Server=sql.neit.edu,4500;Database=SE245_MNowakowski;User Id=SE245_MNowakowski;Password=001392657";
+            tableName = "Persons";
 		}
+
+        private String tableName;
 
 		private String
 			cellPhone,
 			facebook;
 
-		// Public methods
-		public new void Output() { // Output using class properties
-			Console.WriteLine("\nInformation for " + LastName + ", " + FirstName + " " + MiddleName + ": ");
-			Console.WriteLine("Address:");
-			Console.WriteLine("\t" + Street1);
-			Console.WriteLine("\t" + Street2);
-			Console.WriteLine("\t" + City + ", " + State);
-			Console.WriteLine("\t" + Zip);
-			Console.WriteLine("Phone: " + Phone);
-			Console.WriteLine("Cell Phone: " + CellPhone);
-			Console.WriteLine("Email: " + Email);
-			Console.WriteLine("Facebook URL: " + FaceBook);
-		}
+        private SqlConnection sqlConn;
+
+        public bool AddRecord() {
+            bool result = false;
+            if (!inputValid) return result;
+
+            
+            String sql = "INSERT INTO " + tableName;
+
+            sql += " (FName, MName, LName, Street1, Street2, City, State, Zip, Phone, CellPhone, Facebook) ";
+            sql += "VALUES (@Fname, @MName, @LName, @Street1, @Street2, @City, @State, @Zip, @Phone, @CellPhone, @Facebook)";
+
+            SqlCommand sqlComm = new SqlCommand(sql, sqlConn);
+			sqlComm.Parameters.AddWithValue("@FName", FirstName);
+			sqlComm.Parameters.AddWithValue("@MName", MiddleName);
+			sqlComm.Parameters.AddWithValue("@LName", LastName);
+			sqlComm.Parameters.AddWithValue("@Street1", Street1);
+			sqlComm.Parameters.AddWithValue("@Street2", Street2);
+			sqlComm.Parameters.AddWithValue("@City", City);
+			sqlComm.Parameters.AddWithValue("@State", State);
+			sqlComm.Parameters.AddWithValue("@Zip", Zip);
+			sqlComm.Parameters.AddWithValue("@Phone", Phone);
+			sqlComm.Parameters.AddWithValue("@CellPhone", CellPhone);
+			sqlComm.Parameters.AddWithValue("@Facebook", FaceBook);
+
+			try {
+                sqlConn.Open();
+				int numRecordsAffected = sqlComm.ExecuteNonQuery();
+				feedback += numRecordsAffected + " rows inserted.";
+                sqlConn.Close();
+				result = true;
+            } catch (Exception e) { feedback += "Error: " + e.Message + "\n"; }
+
+            return result;
+        }
 
 		public String CellPhone {
 			get { return cellPhone; }
 			set {
-				if(Validator.IsValidPhone(value)) {
-					cellPhone = value;
-					inputValid = true;
-				} else {
+				if(Validator.IsValidPhone(value)) cellPhone = value;
+				else {
 					feedback += "Error: Cell phone is not formatted correctly\n";
 					inputValid = false;
 				}
@@ -49,10 +76,8 @@ namespace Lab6Console {
 		public String FaceBook {
 			get { return facebook; }
 			set {
-				if(Validator.IsValidURL(value)) {
-					facebook = value;
-					inputValid = true;
-				} else {
+				if(Validator.IsValidURL(value)) facebook = value;
+				else {
 					feedback += "Error: FaceBook url is invalid\n";
 					inputValid = false;
 				}

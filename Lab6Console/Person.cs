@@ -1,5 +1,5 @@
 ﻿// Matthew Nowakowski
-// Lab 5 - Person Class
+// Lab 6 - Person Class
 
 using System;
 using ValidationLibrary;
@@ -23,7 +23,7 @@ namespace Lab6Console {
 			email = "";
 
 			feedback = "";
-			inputValid = false;
+			inputValid = true;
 		}
 
 		private String
@@ -58,7 +58,7 @@ namespace Lab6Console {
 			get { return feedback; }
 		}
 
-		public bool LastInputvalid {
+		public bool InputValid {
 			get { return inputValid;  }
 		}
 
@@ -66,10 +66,8 @@ namespace Lab6Console {
 		public String FirstName {
 			get { return fName; }
 			set {
-				if (Validator.IsFilledIn(value)) {
-					fName = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsFilledIn(value)) fName = value;
+                else {
 					feedback += "Error: First name was empty\n";
 					inputValid = false;
 				}
@@ -85,10 +83,8 @@ namespace Lab6Console {
 		public String LastName {
 			get { return lName; }
 			set {
-				if (Validator.IsFilledIn(value)) {
-					lName = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsFilledIn(value)) lName = value;
+                else {
 					feedback += "Error: Last name was empty\n";
 					inputValid = false;
 				}
@@ -98,10 +94,8 @@ namespace Lab6Console {
 		public String Street1 {
 			get { return street1; }
 			set {
-				if (Validator.IsFilledIn(value)) {
-					street1 = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsFilledIn(value)) street1 = value;
+				else {
 					feedback += "Error: Street 1 was empty\n";
 					inputValid = false;
 				}
@@ -117,10 +111,8 @@ namespace Lab6Console {
 		public String City {
 			get { return city; }
 			set {
-				if (Validator.IsFilledIn(value)) {
-					city = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsFilledIn(value)) city = value;
+				else {
 					feedback += "Error: City was empty\n";
 					inputValid = false;
 				}
@@ -130,10 +122,8 @@ namespace Lab6Console {
 		public String State {
 			get { return state; }
 			set {
-				if (Validator.IsFilledIn(value, 2, 2)) {
-					state = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsFilledIn(value, 2, 2)) state = value;
+				else {
 					feedback += "Error: State was invalid length\n";
 					inputValid = false;
 				}
@@ -143,10 +133,8 @@ namespace Lab6Console {
 		public String Zip {
 			get { return zip; }
 			set {
-				if (Validator.IsValidZip(value)) {
-					zip = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsValidZip(value)) zip = value;
+				else {
 					feedback += "Error: Zip is not formatted correctly\n";
 					inputValid = false;
 				}
@@ -156,10 +144,8 @@ namespace Lab6Console {
 		public String Phone {
 			get { return phone; }
 			set {
-				if(Validator.IsValidPhone(value)) {
-					phone = value;
-					inputValid = true;
-				} else {
+				if(Validator.IsValidPhone(value)) phone = value;
+				else {
 					feedback += "Error: Phone is not formatted correctly\n";
 					inputValid = false;
 				}
@@ -169,10 +155,8 @@ namespace Lab6Console {
 		public String Email {
 			get { return email; }
 			set {
-				if (Validator.IsValidEmail(value)) {
-					email = value;
-					inputValid = true;
-				} else {
+				if (Validator.IsValidEmail(value)) email = value;
+				else {
 					feedback += "Error: Email is not formatted correctly\n";
 					inputValid = false;
 				}
