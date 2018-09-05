@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Matthew Nowakowski
+// Lab 6 - Database Insert Program
+// Created: 9/5/18
+// Draft completed: 9/5/18
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

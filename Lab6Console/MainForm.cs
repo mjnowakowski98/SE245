@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Matthew Nowakowski
+// Application startup form
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,12 +30,6 @@ namespace Lab6Console {
 			tmp.Phone = tbPhone.Text;
 			tmp.CellPhone = tbCellPhone.Text;
 			tmp.FaceBook = tbFaceBook.Text;
-
-			if (!tmp.InputValid) {
-				tbOutput.Text = tmp.Feedback;
-				tbOutput.Text += "Invalid form input detected";
-				return;
-			}
 
 			tmp.AddRecord();
 			tbOutput.Text = tmp.Feedback;

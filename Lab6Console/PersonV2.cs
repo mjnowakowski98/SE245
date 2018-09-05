@@ -62,10 +62,11 @@ namespace Lab6Console {
             return result;
         }
 
+		// Can be empty
 		public String CellPhone {
 			get { return cellPhone; }
 			set {
-				if(Validator.IsValidPhone(value)) cellPhone = value;
+				if(Validator.IsValidPhone(value) || value == "") cellPhone = value;
 				else {
 					feedback += "Error: Cell phone is not formatted correctly\n";
 					inputValid = false;
@@ -73,10 +74,11 @@ namespace Lab6Console {
 			}
 		}
 
+		// Can be empty
 		public String FaceBook {
 			get { return facebook; }
 			set {
-				if(Validator.IsValidURL(value)) facebook = value;
+				if(Validator.IsValidURL(value) || value == "") facebook = value;
 				else {
 					feedback += "Error: FaceBook url is invalid\n";
 					inputValid = false;
