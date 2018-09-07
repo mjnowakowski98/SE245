@@ -238,6 +238,7 @@
 			// 
 			// tbOutput
 			// 
+			this.tbOutput.Enabled = false;
 			this.tbOutput.Location = new System.Drawing.Point(16, 341);
 			this.tbOutput.Name = "tbOutput";
 			this.tbOutput.Size = new System.Drawing.Size(377, 134);
