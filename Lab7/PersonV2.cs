@@ -63,15 +63,87 @@ namespace Lab7 {
             return result;
         }
 
-		public DataSet SearchRecords() {
+		public DataSet SearchRecords(String fName, String mName, String lName, String street1, String street2, String city,
+			String state, String zip, String phone, String cellPhone, String facebook) {
+
+			SqlCommand sqlComm = new SqlCommand();
+			sqlComm.Connection = sqlConn;
+
+			String sql = "SELECT *";
+			sql += " FROM " + tableName;
+			sql += " WHERE 0=0";
+
+			if (fName.Length != 0) {
+				sql += " AND FName LIKE @FName";
+				sqlComm.Parameters.AddWithValue("@FName", '%' + fName + '%');
+			}
+			if (mName.Length != 0) {
+				sql += " AND MName LIKE @MName";
+				sqlComm.Parameters.AddWithValue("@MName", '%' + mName + '%');
+			}
+			if (lName.Length != 0) {
+				sql += " AND LName LIKE @LName";
+				sqlComm.Parameters.AddWithValue("@LName", '%' + lName + '%');
+			}
+			if (street1.Length != 0) {
+				sql += " AND Street1 LIKE @Street1";
+				sqlComm.Parameters.AddWithValue("@Street1", '%' + street1 + '%');
+			}
+			if (street2.Length != 0) {
+				sql += " AND Street2 LIKE @Street2";
+				sqlComm.Parameters.AddWithValue("@Street2", '%' +street2 + '%');
+			}
+			if (city.Length != 0) {
+				sql += " AND City LIKE @City";
+				sqlComm.Parameters.AddWithValue("@City", '%' + city + '%');
+			}
+			if (state.Length != 0) {
+				sql += " AND State LIKE @State";
+				sqlComm.Parameters.AddWithValue("@State", '%' + state + '%');
+			}
+			if (zip.Length != 0) {
+				sql += " AND Zip LIKE @Zip";
+				sqlComm.Parameters.AddWithValue("@Zip", '%' + zip + '%');
+			}
+			if (phone.Length != 0) {
+				sql += " AND Phone LIKE @Phone";
+				sqlComm.Parameters.AddWithValue("@Phone", '%' + phone + '%');
+			}
+			if (cellPhone.Length != 0) {
+				sql += " AND CellPhone LIKE @CellPhone";
+				sqlComm.Parameters.AddWithValue("@CellPhone", '%' + cellPhone + '%');
+			}
+			if(facebook.Length != 0) {
+				sql += " AND Facebook LIKE @Facebook";
+				sqlComm.Parameters.AddWithValue("@Facebook", '%' + facebook + '%');
+			}
+			sqlComm.CommandText = sql;
+
 			DataSet ds = new DataSet();
-
-			String sql = "SELECT FName, MName, LName, Street1, Street2,";
-			sql += " City, State, Address, Zip, Phone, CellPhone, Facebook";
-			sql += "WHERE 0=0";
-			SqlCommand sqlComm = new SqlCommand(sql, sqlConn);
-
+			SqlDataAdapter da = new SqlDataAdapter();
+			try {
+				sqlConn.Open();
+				da.SelectCommand = sqlComm;
+				da.Fill(ds, "Persons");
+				sqlConn.Close();
+			} catch (Exception e) { feedback += "Error: " + e.Message; }
 			return ds;
+		}
+
+		public SqlDataReader GetRecord(int id) {
+			String sql = "SELECT *";
+			sql += " FROM " + tableName;
+			sql += " WHERE ID = @Id";
+			SqlCommand sqlComm = new SqlCommand(sql, sqlConn);
+			sqlComm.Parameters.AddWithValue("@Id", id);
+
+			SqlDataReader reader = null;
+			try {
+				sqlConn.Open();
+				reader = sqlComm.ExecuteReader();
+			} catch (Exception e) { feedback += "ERROR: " + e.Message;  }
+
+			return reader;
 		}
 
 		// Can be empty

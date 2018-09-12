@@ -48,8 +48,12 @@
 			this.searchFieldContainer = new System.Windows.Forms.Panel();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.dgvOutput = new System.Windows.Forms.DataGridView();
+			this.feedbackContainer = new System.Windows.Forms.Panel();
+			this.lblFeedback = new System.Windows.Forms.Label();
+			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.searchFieldContainer.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).BeginInit();
+			this.feedbackContainer.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lblFName
@@ -235,7 +239,7 @@
 			this.searchFieldContainer.Controls.Add(this.btnSearch);
 			this.searchFieldContainer.Location = new System.Drawing.Point(0, 0);
 			this.searchFieldContainer.Name = "searchFieldContainer";
-			this.searchFieldContainer.Size = new System.Drawing.Size(368, 333);
+			this.searchFieldContainer.Size = new System.Drawing.Size(773, 333);
 			this.searchFieldContainer.TabIndex = 22;
 			// 
 			// btnSearch
@@ -256,14 +260,47 @@
 			this.dgvOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvOutput.Location = new System.Drawing.Point(374, 0);
 			this.dgvOutput.Name = "dgvOutput";
-			this.dgvOutput.Size = new System.Drawing.Size(222, 333);
+			this.dgvOutput.Size = new System.Drawing.Size(627, 553);
 			this.dgvOutput.TabIndex = 23;
+			this.dgvOutput.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutput_CellDoubleClick);
+			// 
+			// feedbackContainer
+			// 
+			this.feedbackContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.feedbackContainer.Controls.Add(this.richTextBox1);
+			this.feedbackContainer.Controls.Add(this.lblFeedback);
+			this.feedbackContainer.Location = new System.Drawing.Point(12, 339);
+			this.feedbackContainer.Name = "feedbackContainer";
+			this.feedbackContainer.Size = new System.Drawing.Size(341, 202);
+			this.feedbackContainer.TabIndex = 24;
+			// 
+			// lblFeedback
+			// 
+			this.lblFeedback.AutoSize = true;
+			this.lblFeedback.Dock = System.Windows.Forms.DockStyle.Top;
+			this.lblFeedback.Location = new System.Drawing.Point(0, 0);
+			this.lblFeedback.Name = "lblFeedback";
+			this.lblFeedback.Size = new System.Drawing.Size(55, 13);
+			this.lblFeedback.TabIndex = 0;
+			this.lblFeedback.Text = "Feedback";
+			// 
+			// richTextBox1
+			// 
+			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.richTextBox1.Enabled = false;
+			this.richTextBox1.Location = new System.Drawing.Point(0, 13);
+			this.richTextBox1.Name = "richTextBox1";
+			this.richTextBox1.Size = new System.Drawing.Size(341, 189);
+			this.richTextBox1.TabIndex = 1;
+			this.richTextBox1.Text = "";
 			// 
 			// Search
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(596, 333);
+			this.ClientSize = new System.Drawing.Size(1001, 553);
+			this.Controls.Add(this.feedbackContainer);
 			this.Controls.Add(this.dgvOutput);
 			this.Controls.Add(this.tbFacebook);
 			this.Controls.Add(this.tbCellPhone);
@@ -288,10 +325,13 @@
 			this.Controls.Add(this.lblMName);
 			this.Controls.Add(this.lblFName);
 			this.Controls.Add(this.searchFieldContainer);
+			this.MinimumSize = new System.Drawing.Size(700, 592);
 			this.Name = "Search";
 			this.Text = "Search";
 			this.searchFieldContainer.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).EndInit();
+			this.feedbackContainer.ResumeLayout(false);
+			this.feedbackContainer.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -324,5 +364,8 @@
 		private System.Windows.Forms.Panel searchFieldContainer;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.DataGridView dgvOutput;
+		private System.Windows.Forms.Panel feedbackContainer;
+		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.Label lblFeedback;
 	}
 }
