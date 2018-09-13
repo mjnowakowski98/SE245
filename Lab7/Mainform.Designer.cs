@@ -39,7 +39,7 @@
 			// 
 			// btnAdd
 			// 
-			this.btnAdd.Location = new System.Drawing.Point(93, 12);
+			this.btnAdd.Location = new System.Drawing.Point(157, 12);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(75, 23);
 			this.btnAdd.TabIndex = 1;
@@ -51,9 +51,12 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 261);
+			this.ClientSize = new System.Drawing.Size(244, 47);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.btnSearch);
+			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(260, 86);
+			this.MinimumSize = new System.Drawing.Size(260, 86);
 			this.Name = "Mainform";
 			this.Text = "Nowakowski - Lab 7";
 			this.ResumeLayout(false);

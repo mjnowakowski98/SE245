@@ -12,7 +12,6 @@ using System.Windows.Forms;
 namespace Lab7 {
 	public partial class Editor : Form {
 		private bool updateMode;
-		private PersonV2 tmp = new PersonV2();
 
 		public Editor() {
 			InitializeComponent();
@@ -25,6 +24,7 @@ namespace Lab7 {
 			btnSubmit.Text = "Update";
 			updateMode = true;
 
+			PersonV2 tmp = new PersonV2();
 			SqlDataReader dr = tmp.GetRecord(id);
 			while (dr.Read()) {
 				lblId.Text = dr["ID"].ToString();
@@ -44,9 +44,18 @@ namespace Lab7 {
 			dr.Close();
 		}
 
+		private void ClearTextControls() { // Clear textbox controls in panel
+			foreach (Control c in this.Controls[0].Controls) {
+				if (c is TextBox)
+					((TextBox)c).Clear();
+			}
+		}
+
 		private void btnSubmit_Click(object sender, EventArgs e) {
-			if(updateMode) {
+			PersonV2 tmp = new PersonV2();
+			if (updateMode) {
 				// Do nothing until lab 8
+				MessageBox.Show("Not implementing until lab 8");
 			} else {
 				tmp.FirstName = tbFName.Text;
 				tmp.MiddleName = tbMName.Text;
@@ -60,9 +69,13 @@ namespace Lab7 {
 				tmp.CellPhone = tbCellPhone.Text;
 				tmp.FaceBook = tbFaceBook.Text;
 
-				tmp.AddRecord();
+				if(tmp.AddRecord()) ClearTextControls();
 				tbOutput.Text = tmp.Feedback;
 			}
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e) {
+			MessageBox.Show("Not implementing until lab 8");
 		}
 	}
 }

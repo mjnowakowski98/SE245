@@ -49,9 +49,9 @@
 			this.tbMName = new System.Windows.Forms.TextBox();
 			this.tbFName = new System.Windows.Forms.TextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.lblRecId = new System.Windows.Forms.Label();
-			this.lblId = new System.Windows.Forms.Label();
 			this.btnDelete = new System.Windows.Forms.Button();
+			this.lblId = new System.Windows.Forms.Label();
+			this.lblRecId = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -294,14 +294,15 @@
 			this.panel1.Size = new System.Drawing.Size(401, 519);
 			this.panel1.TabIndex = 50;
 			// 
-			// lblRecId
+			// btnDelete
 			// 
-			this.lblRecId.AutoSize = true;
-			this.lblRecId.Location = new System.Drawing.Point(9, 9);
-			this.lblRecId.Name = "lblRecId";
-			this.lblRecId.Size = new System.Drawing.Size(59, 13);
-			this.lblRecId.TabIndex = 50;
-			this.lblRecId.Text = "Record ID:";
+			this.btnDelete.Location = new System.Drawing.Point(210, 322);
+			this.btnDelete.Name = "btnDelete";
+			this.btnDelete.Size = new System.Drawing.Size(153, 23);
+			this.btnDelete.TabIndex = 52;
+			this.btnDelete.Text = "Delete";
+			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
 			// lblId
 			// 
@@ -312,21 +313,25 @@
 			this.lblId.TabIndex = 51;
 			this.lblId.Text = "--";
 			// 
-			// btnDelete
+			// lblRecId
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(210, 322);
-			this.btnDelete.Name = "btnDelete";
-			this.btnDelete.Size = new System.Drawing.Size(153, 23);
-			this.btnDelete.TabIndex = 52;
-			this.btnDelete.Text = "Delete";
-			this.btnDelete.UseVisualStyleBackColor = true;
+			this.lblRecId.AutoSize = true;
+			this.lblRecId.Location = new System.Drawing.Point(9, 9);
+			this.lblRecId.Name = "lblRecId";
+			this.lblRecId.Size = new System.Drawing.Size(59, 13);
+			this.lblRecId.TabIndex = 50;
+			this.lblRecId.Text = "Record ID:";
 			// 
 			// Editor
 			// 
+			this.AcceptButton = this.btnSubmit;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(401, 519);
 			this.Controls.Add(this.panel1);
+			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(417, 558);
+			this.MinimumSize = new System.Drawing.Size(417, 558);
 			this.Name = "Editor";
 			this.Text = "Editor";
 			this.panel1.ResumeLayout(false);

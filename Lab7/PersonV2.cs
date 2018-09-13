@@ -127,6 +127,8 @@ namespace Lab7 {
 				da.Fill(ds, "Persons");
 				sqlConn.Close();
 			} catch (Exception e) { feedback += "Error: " + e.Message; }
+
+			feedback += "INFO: Query returned " + ds.Tables["Persons"].Rows.Count + " rows";
 			return ds;
 		}
 

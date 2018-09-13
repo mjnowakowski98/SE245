@@ -49,8 +49,8 @@
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.dgvOutput = new System.Windows.Forms.DataGridView();
 			this.feedbackContainer = new System.Windows.Forms.Panel();
+			this.tbOutput = new System.Windows.Forms.RichTextBox();
 			this.lblFeedback = new System.Windows.Forms.Label();
-			this.richTextBox1 = new System.Windows.Forms.RichTextBox();
 			this.searchFieldContainer.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvOutput)).BeginInit();
 			this.feedbackContainer.SuspendLayout();
@@ -268,12 +268,22 @@
 			// 
 			this.feedbackContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.feedbackContainer.Controls.Add(this.richTextBox1);
+			this.feedbackContainer.Controls.Add(this.tbOutput);
 			this.feedbackContainer.Controls.Add(this.lblFeedback);
 			this.feedbackContainer.Location = new System.Drawing.Point(12, 339);
 			this.feedbackContainer.Name = "feedbackContainer";
 			this.feedbackContainer.Size = new System.Drawing.Size(341, 202);
 			this.feedbackContainer.TabIndex = 24;
+			// 
+			// tbOutput
+			// 
+			this.tbOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbOutput.Enabled = false;
+			this.tbOutput.Location = new System.Drawing.Point(0, 13);
+			this.tbOutput.Name = "tbOutput";
+			this.tbOutput.Size = new System.Drawing.Size(341, 189);
+			this.tbOutput.TabIndex = 1;
+			this.tbOutput.Text = "";
 			// 
 			// lblFeedback
 			// 
@@ -284,16 +294,6 @@
 			this.lblFeedback.Size = new System.Drawing.Size(55, 13);
 			this.lblFeedback.TabIndex = 0;
 			this.lblFeedback.Text = "Feedback";
-			// 
-			// richTextBox1
-			// 
-			this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.richTextBox1.Enabled = false;
-			this.richTextBox1.Location = new System.Drawing.Point(0, 13);
-			this.richTextBox1.Name = "richTextBox1";
-			this.richTextBox1.Size = new System.Drawing.Size(341, 189);
-			this.richTextBox1.TabIndex = 1;
-			this.richTextBox1.Text = "";
 			// 
 			// Search
 			// 
@@ -365,7 +365,7 @@
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.DataGridView dgvOutput;
 		private System.Windows.Forms.Panel feedbackContainer;
-		private System.Windows.Forms.RichTextBox richTextBox1;
+		private System.Windows.Forms.RichTextBox tbOutput;
 		private System.Windows.Forms.Label lblFeedback;
 	}
 }

@@ -32,6 +32,8 @@ namespace Lab7 {
 
 			dgvOutput.DataSource = ds;
 			dgvOutput.DataMember = ds.Tables["Persons"].ToString();
+
+			tbOutput.Text = tmp.Feedback;
 		}
 
 		private void dgvOutput_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
